@@ -1,0 +1,28 @@
+{% extends 'XblogBlogBundle::layout.html.twig' %}
+
+{% block title %}Contact{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Contact form</h1>
+    </header>
+
+    {% for flashMessage in app.session.flashbag.get('xblog-notice') %}
+        <div class="xblog-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+        {{ form_start(form, { 'action': path('XblogBlogBundle_contact'), 'method': 'POST', 'attr': {'class': 'xblog'} }) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Submit" />
+
+{% endblock %}

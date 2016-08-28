@@ -1,0 +1,32 @@
+XblogBlogBundle_homepage:
+    path:     /
+    defaults: { _controller: "XblogBlogBundle:Page:index" }
+    requirements:
+         methods:  GET
+
+XblogBlogBundle_about:
+    path:     /about
+    defaults: { _controller: "XblogBlogBundle:Page:about" }
+    requirements:
+         methods:  GET
+
+XblogBlogBundle_contact:
+    path:     /contact
+    defaults: { _controller: "XblogBlogBundle:Page:contact" }
+    requirements:
+         methods:  GET|POST
+
+XblogBlogBundle_blog_show:
+   path:  /{id}
+   defaults: { _controller: "XblogBlogBundle:Blog:show" }
+   requirements:
+       methods:  GET
+       id: \d+
+
+XblogBlogBundle_comment_create:
+    path:  /comment/{blog_id}
+    defaults: { _controller: "XblogBlogBundle:Comment:create" }
+    requirements:
+        methods:  POST
+        blog_id: \d+
+
