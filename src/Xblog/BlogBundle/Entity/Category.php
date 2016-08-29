@@ -91,7 +91,7 @@ class Category
      */
     public function getBlogId()
     {
-        return $this->blogId;
+        return $this->blogs;
     }
     /**
      * Constructor

@@ -27,7 +27,7 @@ class Blog
     /**
      * @ORM\Column(type="text")
      */
-    protected $blog;
+    protected $content;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,28 +55,13 @@ class Blog
      */
     protected $created;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $updated;
-
-
     public function __construct()
     {
         $this->comments = new ArrayCollection();
 
         $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
     }
 
-    /**
-     * @ORM\PreUpdate
-     */
-
-    public function setUpdatedValue()
-    {
-        $this->setUpdated(new \DateTime());
-    }
 
     /**
      * @return mixed
@@ -113,20 +98,20 @@ class Blog
     /**
      * @return mixed
      */
-    public function getBlog($length = null)
+    public function getContent($length = null)
     {
         if (false === is_null($length) && $length > 0)
-            return substr($this->blog, 0, $length);
+            return substr($this->content, 0, $length);
         else
-            return $this->blog;
+            return $this->content;
     }
 
     /**
-     * @param mixed $blog
+     * @param mixed $content
      */
-    public function setBlog($blog)
+    public function setContent($content)
     {
-        $this->blog = $blog;
+        $this->content = $content;
     }
 
     /**
@@ -176,22 +161,7 @@ class Blog
     {
         $this->created = $created;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    /**
-     * @param mixed $updated
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-    }
+    
 
     /**
      * Add comment

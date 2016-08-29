@@ -4,8 +4,22 @@ parameters:
 #    parameter_name: value
 
 services:
+
     admin.category:
         class: Xblog\BlogBundle\Admin\CategoryAdmin
         arguments: [~, Xblog\BlogBundle\Entity\Category, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Category }
+
+    admin.blog:
+        class: Xblog\BlogBundle\Admin\BlogAdmin
+        arguments: [~, Xblog\BlogBundle\Entity\Blog, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Blog }
+
+    admin.comment:
+        class: Xblog\BlogBundle\Admin\CommentAdmin
+        arguments: [~, Xblog\BlogBundle\Entity\Comment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Comment }
+

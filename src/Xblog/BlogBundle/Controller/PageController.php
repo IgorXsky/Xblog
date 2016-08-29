@@ -44,7 +44,6 @@ class PageController extends Controller
                     ->setTo($this->container->getParameter('xblog_blog.emails.contact_email'))
                     ->setBody($this->renderView('XblogBlogBundle:Page:contactEmail.txt.twig', array('contact' => $contact)));
 
-
                 $this->get('mailer')->send($message);
 
                 $this->addFlash('xblog-notice', 'Your contact enquiry was successfully sent. Thank you!');
@@ -52,9 +51,7 @@ class PageController extends Controller
                 // Redirect - This is important to prevent users re-posting
                 // the form if they refresh the page
                 return $this->redirect($this->generateUrl('XblogBlogBundle_contact'));
-
             }
-
         }
 
         return $this->render('XblogBlogBundle:Page:contact.html.twig', array(

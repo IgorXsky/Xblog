@@ -3,7 +3,7 @@
 namespace Xblog\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Xblog\BlogBundle\Entity\Repository\CommentRepository;
+
 /**
  * Blog controller.
  */

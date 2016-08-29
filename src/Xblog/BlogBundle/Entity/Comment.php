@@ -47,26 +47,13 @@ class Comment
      */
     protected $created;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $updated;
-
     public function __construct()
     {
         $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
 
         $this->setApproved(true);
     }
 
-    /**
-     * @ORM\preUpdate
-     */
-    public function setUpdatedValue()
-    {
-        $this->setUpdated(new \DateTime());
-    }
 
     /**
      * Get id
@@ -174,29 +161,7 @@ class Comment
         return $this->created;
     }
 
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     *
-     * @return Comment
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
 
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \DateTime
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
 
     /**
      * Set blog

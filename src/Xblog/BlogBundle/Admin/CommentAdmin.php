@@ -13,23 +13,20 @@ class CommentAdmin extends Admin
     {
         $formMapper->add('user')
                    ->add('comment')
-                   ->add('blog.title');
+                   ->add('blog');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('user')
-                       ->add('comment')
-                       ->add('blog.title');
-}
+                       ->add('created', 'doctrine_orm_date', array('input_type' => 'timestamp'));
+    }
 
     protected function configureListFields(ListMapper $formMapper)
     {
         $formMapper->addIdentifier('user')
                    ->addIdentifier('comment')
-                   ->add('blog', 'entity', array(
-                        'class' => 'BlogBundle\Entity\Blog',
-                        'property' => 'title'))
-        ;
+                   ->add('created')
+                   ->add('blog.title');
     }
 }

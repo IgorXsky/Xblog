@@ -12,37 +12,30 @@ class BlogAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('title')
-                   ->add('blog')
+                   ->add('content')
                    ->add('image')
                    ->add('tags')
-            ->add('category', 'entity', array(
-                'class' => 'BlogBundle\Entity\Category',
-                'property' => 'name'
-            ));
+                    ->add('category', 'entity', array(
+                        'class' => 'Xblog\BlogBundle\Entity\Category',
+                        'property' => 'name'
+                    ));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('title')
-                        ->add('blog')
-                        ->add('image')
                         ->add('tags')
-            ->add('category', 'entity', array(
-                'class' => 'BlogBundle\Entity\Category',
-                'property' => 'name'
-            ));
+                        ->add('created', 'doctrine_orm_date_range', array('input_type' => 'timestamp'))
+                        ->add('category.name');
 
     }
 
     protected function configureListFields(ListMapper $formMapper)
     {
         $formMapper->add('title')
-                    ->add('blog')
+                    ->add('content')
                     ->add('image')
                     ->add('tags')
-                    ->add('category', 'entity', array(
-                        'class' => 'BlogBundle\Entity\Category',
-                        'property' => 'name'
-                    ));
+                    ->add('category.name');
     }
 }
